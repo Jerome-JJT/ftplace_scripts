@@ -104,7 +104,7 @@ def map_image(image_name):
 if (__name__ == "__main__"):
     if (len(sys.argv) > 1):
 
-        if (sys.argv[1] == "2" and len(sys.argv) > 2):
+        if (sys.argv[1] == "2"):
             
             map_image(sys.argv[2])
             

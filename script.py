@@ -11,6 +11,10 @@ from show import create_image
 # host = "http://c1r14s2:6666/"
 host = "http://c1r14s2:7979/"
 host = "https://ftplace.42lwatch.ch/"
+
+domain = "c1r14s2.local"
+domain = "ftplace.42lwatch.ch"
+
 cookie_file = '.custom_cookie_jar'
 
 # cookie_jar = http.cookiejar.LWPCookieJar(".cookie_jar")
@@ -69,8 +73,8 @@ def make_get(url):
             custom_cookie_jar.write(f"{token}\n")
             custom_cookie_jar.write(f"{refresh}\n")
             
-        session.cookies.set("token", token, path="/", domain="c1r14s2.local")
-        session.cookies.set("refresh", refresh, path="/", domain="c1r14s2.local")
+        session.cookies.set("token", token, path="/", domain=domain)
+        session.cookies.set("refresh", refresh, path="/", domain=domain)
         
         response = session.get(url)
         return response
@@ -95,8 +99,8 @@ def make_post(url, data):
             custom_cookie_jar.write(f"{token}\n")
             custom_cookie_jar.write(f"{refresh}\n")
             
-        session.cookies.set("token", token, path="/", domain="c1r14s2.local")
-        session.cookies.set("refresh", refresh, path="/", domain="c1r14s2.local")
+        session.cookies.set("token", token, path="/", domain=domain)
+        session.cookies.set("refresh", refresh, path="/", domain=domain)
         
         response = session.post(url, json=data)
         return response
@@ -113,8 +117,8 @@ def make_post(url, data):
 # cookie_jar.set_cookie(c)
 # cookie_jar.save(ignore_discard=True)
 
-session.cookies.set("token", token, path="/", domain="c1r14s2.local")
-session.cookies.set("refresh", refresh, path="/", domain="c1r14s2.local")
+session.cookies.set("token", token, path="/", domain=domain)
+session.cookies.set("refresh", refresh, path="/", domain=domain)
 
 board = ''
 
@@ -246,11 +250,12 @@ if (__name__ == "__main__"):
                     print("DRAW", orders[r], 'rest', len(orders))
                     res = make_post(f"{host}api/set", orders[r])
                     
-                    orders.pop(r)
                     
                     print(res.status_code)
                     if (res.status_code == 425):
                         break
+                    if (res.status_code == 201):
+                        orders.pop(r)
                     
                     time.sleep(1)
                     

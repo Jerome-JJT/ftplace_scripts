@@ -40,6 +40,9 @@ def ask_token():
         custom_cookie_jar.write(f"{token}\n")
         custom_cookie_jar.write(f"{refresh}\n")
         
+    session.cookies.set("token", token, path="/", domain=domain)
+    session.cookies.set("refresh", refresh, path="/", domain=domain)
+        
 
 try:
     with open(cookie_file, "r") as custom_cookie_jar:
@@ -78,7 +81,13 @@ def make_get(url):
         
         response = session.get(url)
         return response
-    
+
+    elif (response.status_code == 401):
+        print("401 Expired")
+        ask_token()
+        
+        response = session.get(url)
+        return response
     else:
         return response
     
@@ -105,6 +114,12 @@ def make_post(url, data):
         response = session.post(url, json=data)
         return response
     
+    elif (response.status_code == 401):
+        print("401 Expired")
+        ask_token()
+        
+        response = session.post(url, json=data)
+        return response
     else:
         return response
     
@@ -145,9 +160,14 @@ update_board()
 #         s += str(board[j][i]["color_id"])
 
     # print(s)
-    
+
+# 42lwatch
 destx = 149
 desty = 53
+
+# Wiiu
+destx = 97
+desty = 104
 
 if (__name__ == "__main__"):
     if (len(sys.argv) > 1):

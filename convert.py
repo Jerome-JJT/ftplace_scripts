@@ -60,7 +60,7 @@ def map_image(image_name):
         grid.append("")
         for x in range(width):
             pixel = image.getpixel((x, y))
-            if (pixel[3] != 0):
+            if (pixel[3] > 128):
                 nearest_color = find_nearest_color(pixel, color_mapping)
             else:
                 nearest_color = {'id': 0}

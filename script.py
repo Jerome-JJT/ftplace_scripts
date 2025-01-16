@@ -222,7 +222,7 @@ if (__name__ == "__main__"):
                     
                     idtodo = ord(changes[n][m]) - ord('A')
                     
-                    if (idtodo != 0 and (n + desty) > 0 and (m + destx) > 0 and idtodo != proof[n + desty][m + destx]):
+                    if (idtodo != 0 and (n + desty) > 0 and (m + destx) > 0 and chr(idtodo + ord('A')) != proof[n + desty][m + destx]):
                         # proof[n + desty][m + destx] = changes[n][m]
                         nbchange += 1
                         proof[n + desty] = proof[n + desty][:m + destx] + changes[n][m] + proof[n + desty][m + destx + 1:]
@@ -257,9 +257,10 @@ if (__name__ == "__main__"):
                         
                         idtodo = ord(changes[n][m]) - ord('A')
                         
-                        if (idtodo != 0 and n + desty > 0 and m + destx > 0 and idtodo != proof[n + desty][m + destx]):
+                        if (idtodo != 0 and n + desty > 0 and m + destx > 0 and chr(idtodo + ord('A')) != proof[n + desty][m + destx]):
                             # proof[n + desty][m + destx] = changes[n][m]
                             
+                            nbchange += 1
                             orders.append({"x": m + destx, "y": n + desty, "color": idtodo})
                 
                 print(nbchange, " TO CHANGE")

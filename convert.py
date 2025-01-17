@@ -45,7 +45,8 @@ def map_image(image_name):
         {'id': 13, 'name': 'blue', 'red': 0, 'green': 152, 'blue': 255}, 
         {'id': 14, 'name': 'indigo', 'red': 0, 'green': 65, 'blue': 176}, 
         {'id': 15, 'name': 'magenta', 'red': 207, 'green': 110, 'blue': 228}, 
-        {'id': 16, 'name': 'purple', 'red': 155, 'green': 28, 'blue': 182}
+        {'id': 16, 'name': 'purple', 'red': 155, 'green': 28, 'blue': 182},
+        {'id': 17, 'name': 'marco', 'red': 255, 'green': 224, 'blue': 180}
     ]
     color_mapping = dict(map(lambda x: (x["id"], x), color_mapping))
     
@@ -69,11 +70,11 @@ def map_image(image_name):
             grid[-1] += chr(nearest_color["id"] + ord('A'))
     
     
-    with open('converted.txt', "w") as f:
+    with open(f'converted_{image_name[:image_name.find(".")]}.txt', "w") as f:
         for i in grid:
             f.write(f"{i}\n")
 
-    create_image(grid, 10, 'converted.png')
+    create_image(grid, 10, f'converted_{image_name[:image_name.find(".")]}.png')
     
     
     

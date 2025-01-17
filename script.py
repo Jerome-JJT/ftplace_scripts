@@ -173,6 +173,21 @@ desty = 104
 # destx = 120
 # desty = 126
 
+# orange
+destx = 131
+desty = 104
+
+# blue
+# destx = 61
+# desty = 122
+
+# threads new
+destx = 91
+desty = 26
+
+order = False
+
+
 if (__name__ == "__main__"):
     if (len(sys.argv) > 1):
         if (sys.argv[1] == "1"):
@@ -186,10 +201,10 @@ if (__name__ == "__main__"):
                 
         elif (sys.argv[1] == "2" and len(sys.argv) > 2):
             
-            startx = 29
-            starty = 18
-            sizex = 20
-            sizey = 20
+            startx = 91
+            starty = 26
+            sizex = 32
+            sizey = 32
             
             with open(sys.argv[2], "w") as f:
                 for i in range(starty, starty + sizey):
@@ -227,7 +242,7 @@ if (__name__ == "__main__"):
                         nbchange += 1
                         proof[n + desty] = proof[n + desty][:m + destx] + changes[n][m] + proof[n + desty][m + destx + 1:]
             
-            create_image(proof, 1, 'proof.png')
+            create_image(proof, 1, f'proof_{sys.argv[2][:sys.argv[2].find(".")]}.png')
             print(nbchange, " TO CHANGE")
             
             
@@ -271,7 +286,8 @@ if (__name__ == "__main__"):
                         break
                     
                     r = random.randrange(len(orders))
-                    
+                    if order == True:
+                        r = 0
                     print("DRAW", orders[r], 'rest', len(orders))
                     res = make_post(f"{host}api/set", orders[r])
                     

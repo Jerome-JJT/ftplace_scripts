@@ -162,29 +162,57 @@ update_board()
     # print(s)
 
 # 42lwatch
-destx = 149
-desty = 53
+# destx = 149
+# desty = 53
 
 # Wiiu
-destx = 97
-desty = 104
+# destx = 97
+# desty = 104
 
 # qr
 # destx = 120
 # desty = 126
 
 # orange
-destx = 131
-desty = 104
+# destx = 131
+# desty = 104
 
 # blue
 # destx = 61
 # desty = 122
 
-# threads new
-destx = 91
-desty = 26
+# blue new
+destx = 68
+desty = 122
 
+# threads new
+# destx = 91
+# desty = 26
+
+# majora ABORT
+# destx = 180
+# desty = 180
+
+# tardis
+# destx = 131
+# desty = 45
+
+# smash
+# destx = 200
+# desty = 80
+
+# luma
+# destx = 133
+# desty = 55
+# destx = 192
+# desty = 14
+
+#pochita test
+# destx = 80
+# desty = -10
+
+# destx = 50
+# desty = 140
 order = False
 
 
@@ -237,8 +265,10 @@ if (__name__ == "__main__"):
                     
                     idtodo = ord(changes[n][m]) - ord('A')
                     
-                    if (idtodo != 0 and (n + desty) > 0 and (m + destx) > 0 and chr(idtodo + ord('A')) != proof[n + desty][m + destx]):
+                    if (idtodo != 0 and (n + desty) >= 0 and (m + destx) >= 0 and chr(idtodo + ord('A')) != proof[n + desty][m + destx]):
                         # proof[n + desty][m + destx] = changes[n][m]
+
+
                         nbchange += 1
                         proof[n + desty] = proof[n + desty][:m + destx] + changes[n][m] + proof[n + desty][m + destx + 1:]
             

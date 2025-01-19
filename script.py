@@ -170,8 +170,8 @@ update_board()
 # desty = 104
 
 # qr
-# destx = 120
-# desty = 126
+destx = 229
+desty = 0
 
 # orange
 # destx = 131
@@ -208,12 +208,21 @@ update_board()
 # desty = 14
 
 #pochita test
-# destx = 80
-# desty = -10
+# destx = 104
+# desty = 140
 
 # Sword
-destx = 50
-desty = 139
+# destx = 50
+# desty = 139
+
+# # luma up gauche
+# destx = 14
+# desty = 35
+
+
+# # # pochita up gauche
+# destx = 5
+# desty = 30
 
 
 order = False

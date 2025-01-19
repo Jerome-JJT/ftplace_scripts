@@ -46,7 +46,8 @@ def map_image(image_name):
         {'id': 14, 'name': 'indigo', 'red': 0, 'green': 65, 'blue': 176}, 
         {'id': 15, 'name': 'magenta', 'red': 207, 'green': 110, 'blue': 228}, 
         {'id': 16, 'name': 'purple', 'red': 155, 'green': 28, 'blue': 182},
-        {'id': 17, 'name': 'marco', 'red': 255, 'green': 224, 'blue': 180}
+        {'id': 17, 'name': 'beige', 'red': 255, 'green': 224, 'blue': 180},
+        {'id': 18, 'name': 'darkred', 'red': 190, 'green': 0, 'blue': 57}
     ]
     color_mapping = dict(map(lambda x: (x["id"], x), color_mapping))
     

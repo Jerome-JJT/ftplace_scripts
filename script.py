@@ -182,8 +182,8 @@ update_board()
 # desty = 122
 
 # blue new
-destx = 68
-desty = 122
+# destx = 68
+# desty = 122
 
 # threads new
 # destx = 91
@@ -211,8 +211,11 @@ desty = 122
 # destx = 80
 # desty = -10
 
-# destx = 50
-# desty = 140
+# Sword
+destx = 50
+desty = 139
+
+
 order = False
 
 

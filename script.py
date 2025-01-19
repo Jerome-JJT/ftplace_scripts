@@ -216,8 +216,8 @@ desty = 0
 # desty = 139
 
 # # luma up gauche
-# destx = 14
-# desty = 35
+destx = 15
+desty = 36
 
 
 # # # pochita up gauche

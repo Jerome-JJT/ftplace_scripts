@@ -194,8 +194,8 @@ update_board()
 # desty = 180
 
 # tardis
-destx = 194
-desty = 23
+# destx = 194
+# desty = 23
 # destx = 195
 # desty = 168
 
@@ -222,9 +222,10 @@ desty = 23
 # desty = 36
 
 
-# # # pochita up gauche
-# destx = 5
-# desty = 30
+# # # pochita middle
+destx = 116
+desty = 16
+
 
 
 order = False

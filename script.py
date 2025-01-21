@@ -193,11 +193,12 @@ update_board()
 # destx = 180
 # desty = 180
 
-# tardis
-# destx = 194
-# desty = 23
-# destx = 195
-# desty = 168
+# tardis combo
+destx = -8
+desty = 19
+
+# destx = 126
+# desty = 59
 
 # smash
 # destx = 200
@@ -223,8 +224,8 @@ update_board()
 
 
 # # # pochita middle
-destx = 116
-desty = 16
+# destx = 116
+# desty = 16
 
 
 

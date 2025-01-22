@@ -194,8 +194,8 @@ update_board()
 # desty = 180
 
 # tardis combo
-destx = -8
-desty = 19
+# destx = -8
+# desty = 19
 
 # destx = 126
 # desty = 59
@@ -226,6 +226,11 @@ desty = 19
 # # # pochita middle
 # destx = 116
 # desty = 16
+
+
+# chomo
+destx = 126
+desty = 232
 
 
 

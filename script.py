@@ -236,6 +236,10 @@ update_board()
 destx = 154
 desty = 68
 
+# hh
+# destx = 138
+# desty = 39
+
 
 
 order = False

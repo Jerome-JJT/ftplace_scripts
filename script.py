@@ -228,9 +228,13 @@ update_board()
 # desty = 16
 
 
-# chomo
-destx = 126
-desty = 232
+# # chomo
+# destx = 126
+# desty = 232
+
+# sans
+destx = 154
+desty = 68
 
 
 

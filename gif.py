@@ -10,14 +10,15 @@ import shutil
 import datetime
 import imageio
 import glob
+import rich
 
 from show import create_image
 # host = "http://c1r14s2:6666/"
-host = "http://c1r14s2:7979/"
-# host = "https://ftplace.42lwatch.ch/"
+# host = "http://c1r14s2:7979/"
+host = "https://ftplace.42lwatch.ch/"
 
-domain = "c1r14s2.local"
-# domain = "ftplace.42lwatch.ch"
+# domain = "c1r14s2.local"
+domain = "ftplace.42lwatch.ch"
 
 cookie_file = '.custom_cookie_jar'
     
@@ -113,7 +114,7 @@ board = ''
 def get_board(time):
     global board
     
-    response = make_get(f"{host}api/getimage?time={time}", stream=True)
+    response = make_get(f"{host}api/getimage?time={time}&scale=4", stream=True)
     filename = time.replace("-", "_").replace(":", "_").replace(".", "_")
 
     os.makedirs("imgs", exist_ok=True)
@@ -142,8 +143,14 @@ if (__name__ == "__main__"):
                 time.sleep(30)
                 
         elif (sys.argv[1] == "2"):
-            starttime = datetime.datetime.fromisoformat('2025-01-15T16:00:00.000000')
-            endtime = datetime.datetime.fromisoformat('2025-01-16T13:41:17.356715')
+            # starttime = datetime.datetime.fromisoformat('2025-01-15T00:00:00.000000')
+            # endtime = datetime.datetime.fromisoformat('2025-01-29T17:00:00.000000')
+
+            starttime = datetime.datetime.fromisoformat('2025-01-29T16:00:00.000000')
+            endtime = datetime.datetime.fromisoformat('2025-01-30T00:00:00.000000')
+
+            # starttime = datetime.datetime.fromisoformat('2025-01-14T12:00:00.000000')
+            # endtime = datetime.datetime.fromisoformat('2025-01-15T02:00:00.000000')
 
             while starttime < endtime:
                 print("GET ", starttime.isoformat())
@@ -151,11 +158,12 @@ if (__name__ == "__main__"):
                 
                 starttime += datetime.timedelta(hours=1)
                 
-                time.sleep(1)
+                time.sleep(0.05)
 
         elif (sys.argv[1] == "3"):
             images = []
-            for filename in glob.glob('imgs/*.png'):
+            for filename in sorted(glob.glob('imgs/*.png'))[:]:
+                rich.print(filename)
                 images.append(imageio.imread(filename))
             imageio.mimsave('res.gif', images)
 

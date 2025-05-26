@@ -36,11 +36,12 @@ def create_image(grid, chunk_size, outp):
 
     # Create a new image with an RGBA mode
     image = Image.new("RGBA", (image_width, image_height))
+    print(image_width, image_height)
 
     # Draw the grid on the image
     for row_idx, row in enumerate(grid):
         for col_idx, cell in enumerate(row.strip()):
-            
+
             color = color_mapping.get(ord(cell) - ord('A'), None)
             
             for y in range(row_idx * chunk_size, (row_idx + 1) * chunk_size):

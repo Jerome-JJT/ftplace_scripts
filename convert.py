@@ -65,10 +65,10 @@ def map_image(image_name):
             if (pixel[3] > 128):
                 nearest_color = find_nearest_color(pixel, color_mapping)
             else:
-                nearest_color = {'id': 0}
+                nearest_color = {'id': -1}
             # print(nearest_color)
             
-            grid[-1] += chr(nearest_color["id"] + ord('A'))
+            grid[-1] += chr(nearest_color["id"] + ord('A')) if nearest_color["id"] != -1 else "Z"
     
     
     with open(f'converted_{image_name[:image_name.find(".")]}.txt', "w") as f:

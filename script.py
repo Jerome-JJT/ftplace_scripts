@@ -11,12 +11,14 @@ from show import create_image
 # host = "http://c1r14s2:6666/"
 host = "http://c1r14s2:7979/"
 host = "https://ftplace.42lwatch.ch/"
+host = "https://ftplace.42lausanne.ch/"
 
 domain = "c1r14s2.local"
 domain = "ftplace.42lwatch.ch"
+domain = "ftplace.42lausanne.ch"
 
-cookie_file = '.custom_cookie_jar'
-
+cookie_file = '.custom_cookie_jar' + (sys.argv[5] if len(sys.argv) >= 6 else '')
+print(cookie_file)
 # cookie_jar = http.cookiejar.LWPCookieJar(".cookie_jar")
 # try:
 #     cookie_jar.load(ignore_discard=True)
@@ -25,6 +27,15 @@ cookie_file = '.custom_cookie_jar'
     
 session = requests.Session()
 # session.cookies = cookie_jar
+
+
+
+
+
+
+
+
+
 
 token = ''
 refresh = ''
@@ -157,7 +168,7 @@ update_board()
 # for i in range(40, 50):
 #     s = ""
 #     for j in range(40, 50):
-#         s += str(board[j][i]["color_id"])
+#         s += str(board[j][i]["c"])
 
     # print(s)
 
@@ -228,9 +239,57 @@ update_board()
 # desty = 16
 
 
+# python script.py 3 converted_pyra3.txt 007 007 jja
+# python script.py 3 converted_Vincent_bg.txt 007 007 firsto
+# python script.py 3 converted_kngiht.txt 007 007 seco
+# python script.py 3 converted_dofus.txt 007 007 thir
+# python script.py 3 converted_pixel_zss2.txt 007 007 quact
+
+# python script.py 3 converted_link.txt 007 007 servfir
+# python script.py 3 converted_mona.txt 007 007 servdos
+# python script.py 3 converted_charmender.txt 007 007 serthir
+
+
+
+
+
+
 # chomo
-destx = 126
-desty = 232
+if "pyra" in sys.argv[2]:
+    destx = 126
+    desty = 232
+elif "Vinc" in sys.argv[2]:
+    destx = 300
+    desty = 10
+elif "kng" in sys.argv[2]:
+    destx = 100
+    desty = 350
+elif "dofu" in sys.argv[2]:
+    destx = 250
+    desty = 100
+elif "zss" in sys.argv[2]:
+    destx = 300
+    desty = 50
+elif "link" in sys.argv[2]:
+    destx = -15
+    desty = 232
+elif "mona" in sys.argv[2]:
+    destx = 500
+    desty = 250
+elif "char" in sys.argv[2]:
+    destx = 250
+    desty = 300
+elif "sans2" in sys.argv[2]:
+    destx = 335
+    desty = 80
+elif "cutheart" in sys.argv[2]:
+    destx = 20
+    desty = 266
+else:
+    destx = 0
+    desty = 0
+
+
 
 
 
@@ -255,11 +314,11 @@ if (__name__ == "__main__"):
             sizex = 32
             sizey = 32
             
-            with open(sys.argv[2], "w") as f:
+            with open(sys.argv[2], "w", encoding="utf8") as f:
                 for i in range(starty, starty + sizey):
                     s = ""
                     for j in range(startx, startx + sizex):
-                        s += chr(board[j][i]["color_id"] + ord('A'))
+                        s += chr(board[j][i]["c"] + ord('A'))
                         
                     print(f"{s}")
                     f.write(f"{s}\n")
@@ -268,7 +327,7 @@ if (__name__ == "__main__"):
         elif (sys.argv[1] == "3" and len(sys.argv) > 2):
 
             changes = []
-            with open(sys.argv[2], "r") as f:
+            with open(sys.argv[2], "r", encoding="utf8") as f:
                 changes = f.readlines()
 
             nbchange = 0
@@ -277,7 +336,7 @@ if (__name__ == "__main__"):
             for n, i in enumerate(board):
                 proof.append("")
                 for m, j in enumerate(i):
-                    proof[-1] += chr(board[m][n]['color_id'] + ord('A'))
+                    proof[-1] += chr(board[m][n]['c'] + ord('A'))
                     
             
                     
@@ -289,7 +348,8 @@ if (__name__ == "__main__"):
                     if (idtodo != 0 and (n + desty) >= 0 and (m + destx) >= 0 and chr(idtodo + ord('A')) != proof[n + desty][m + destx]):
                         # proof[n + desty][m + destx] = changes[n][m]
 
-
+                        if changes[n][m] == 'Z':
+                            continue
                         nbchange += 1
                         proof[n + desty] = proof[n + desty][:m + destx] + changes[n][m] + proof[n + desty][m + destx + 1:]
             
@@ -314,13 +374,15 @@ if (__name__ == "__main__"):
                 for n, i in enumerate(board):
                     proof.append("")
                     for m, j in enumerate(i):
-                        proof[-1] += chr(board[m][n]['color_id'] + ord('A'))
+                        proof[-1] += chr(board[m][n]['c'] + ord('A'))
 
                 orders = []
 
                 for n, i in enumerate(changes):
                     for m, j in enumerate(i.strip()):
                         
+                        if changes[n][m] == 'Z':
+                            continue
                         idtodo = ord(changes[n][m]) - ord('A')
                         
                         if (idtodo != 0 and n + desty > 0 and m + destx > 0 and chr(idtodo + ord('A')) != proof[n + desty][m + destx]):
